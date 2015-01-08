@@ -1,0 +1,7 @@
+<meta charset="<%= @options.charset %>"><title><%= h @title %></title><%
+if rdoc_url = @old_cfg['rdoc_url'] %><link
+rel="alternate"
+title="Atom feed"
+href="<%= rdoc_url %>NEWS.atom.xml"
+type="application/atom+xml" /><%
+end %>

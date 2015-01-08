@@ -1,0 +1,17 @@
+<%
+simple_files = @files.select(&:text?)
+unless simple_files.empty?
+  current_name = nil
+  if defined?(current) && current.respond_to?(:page_name)
+    current_name = current.page_name
+  end
+  simple_files.each do |f|
+    next if @old_cfg["noindex"].include?(f.page_name)
+    b = (current_name == f.page_name)
+%><a
+href="<%= rel_prefix %><%= f.path %>"><%=
+b ? '<b>' : '' %><%= h f.page_name %><%= b ? '</b>' : ''%></a>
+<%
+  end
+end
+%><br />

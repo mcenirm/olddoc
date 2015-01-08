@@ -1,0 +1,17 @@
+/GIT-VERSION-FILE
+ChangeLog
+olddoc_1
+olddoc_5
+LATEST
+/NEWS
+/NEWS.atom.xml
+/pkg
+*.tar.gz
+*.log
+/man
+*.gem
+*.gz
+.manifest
+.gem-manifest
+.tgz-manifest
+/doc

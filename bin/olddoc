@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# Copyright (C) 2015, all contributors <olddoc-public@80x24.org>
+$stderr.sync = $stdout.sync = true
+tasks = %w(prepare merge)
+usage = "Usage: #{File.basename($0)} [#{tasks.join('|')}]"
+require 'olddoc'
+opts = Olddoc.config
+case ARGV[0]
+when "prepare"
+  Olddoc::Prepare.new(opts).run
+when "merge"
+  Olddoc::Merge.new(opts).run
+else
+  warn "#{$0.inspect} #{ARGV.inspect} not understood"
+  abort usage
+end

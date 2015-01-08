@@ -1,0 +1,79 @@
+<%=
+render('_sidebar_pages.rhtml') <<
+render('_sidebar_classes.rhtml') <<
+render('_sidebar_methods.rhtml')
+%><h1
+id="<%= h klass.aref %>"><%= klass.type %> <%= klass.full_name %></h1><%=
+klass.description.strip
+%><%
+nd = '(Not documented)'
+klass.each_section do |section, constants, attributes|
+  constants = constants.select(&:display?)
+  attributes = attributes.select(&:display?)
+  if section.title
+%><h2
+id="<%= section.aref %>"><%= section.title %></h2><%
+  end
+  if section.comment %><p><%= section.description.strip %></p><%
+  end
+  unless constants.empty? %><h3>Constants</h3><%
+    constants.each { |const|
+      %><h4
+id="<%= const.name %>"><%= const.name %></h4><%=
+      const.comment ? const.description.strip : nd %><%
+    } %><%
+  end
+  unless attributes.empty? %><h3>Attributes</h3><%
+    attributes.each do |attrib|
+%><h4
+id="<%= attrib.aref %>"><%=
+      h(attrib.name) %> [<%= attrib.rw %>]</h4><%=
+      attrib.comment ? attrib.description.strip : nd %><%
+    end
+  end
+  klass.methods_by_type(section).each do |type, visibilities|
+    next if visibilities.empty?
+    visibilities.each do |visibility, methods|
+      next if methods.empty? %><h3
+id="<%= visibility %>-<%= type %>-<%= section.aref %>-method-details">
+<%= visibility.to_s.capitalize %> <%= type.capitalize %> Methods</h3><%
+      methods.each do |method|
+      %><pre id="<%= method.aref %>"><b><%
+        if method.call_seq %><%= h method.call_seq %><%
+        else
+          %><%= h method.name %> <%= h method.param_seq %><%
+        end %></b><%= method_srclink(method) %></pre><%=
+          method.comment ? method.description.strip : nd %><%
+        if method.calls_super %>Calls superclass method<%=
+           method.superclass_method ?
+           method.formatter.link(method.superclass_method.full_name,
+                                 method.superclass_method.full_name) : nil
+        %><%
+        end
+        unless method.aliases.empty?
+        %> Also aliased as: <%=
+          method.aliases.map do |aka|
+            if aka.parent # HACK lib/rexml/encodings
+              %{<a href="#{klass.aref_to(aka.path)}">#{h aka.name}</a>}
+            else
+              h aka.name
+            end
+          end.join ", " %><%
+        end
+        if method.is_alias_for
+       %><br />Alias for:
+<a
+href="<%= klass.aref_to method.is_alias_for.path %>"><%=
+          h method.is_alias_for.name %></a><%
+        end
+      end
+    end
+  end
+end
+%><%=
+render('_sidebar_sections.rhtml').strip <<
+render('_sidebar_parent.rhtml').strip <<
+render('_sidebar_includes.rhtml').strip <<
+render('_sidebar_extends.rhtml').strip <<
+render('_sidebar_navigation.rhtml').strip
+%>

@@ -1,0 +1,9 @@
+= olddoc installation
+
+olddoc requires Ruby 1.9.3 (or later) and rdoc 4.2 or later to install.
+Once you have Ruby installed, installation via RubyGems should take care
+of the dependency for you:
+
+	gem install olddoc
+
+See README for usage instructions.

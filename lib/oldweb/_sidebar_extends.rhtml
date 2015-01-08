@@ -1,0 +1,13 @@
+<%
+unless klass.extends.empty?
+%><p><b>Extended with:</b> <%
+  klass.each_extend do |ext|
+    unless String === ext.module
+%><a
+href="<%= klass.aref_to ext.module.path %>"><%= ext.module.full_name %></a><%
+    else
+%><%= ext.name %><%
+    end
+  end
+end
+%>

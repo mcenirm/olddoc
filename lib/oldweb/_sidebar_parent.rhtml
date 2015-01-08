@@ -1,0 +1,13 @@
+<%
+# having Object as parent is boring
+if klass.type == 'class' && klass.superclass != 'Object'
+%><p><b>Parent:</b> <%
+  if klass.superclass and not String === klass.superclass
+%><a
+href="<%= klass.aref_to klass.superclass.path %>"><%=
+    klass.superclass.full_name %></a><%
+  else
+%><%= klass.superclass %><%
+  end
+end
+%>

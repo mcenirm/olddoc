@@ -1,0 +1,8 @@
+<%
+unless klass.sections.length == 1
+%><p><b>Sections:</b> <%
+  klass.sort_sections.each do |section| %><a
+href="#<%= section.aref %>"><%= h section.title %></a><%
+  end
+end
+%>

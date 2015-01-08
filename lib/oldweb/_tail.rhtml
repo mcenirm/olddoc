@@ -1,0 +1,25 @@
+<%
+public_email = @old_cfg['public_email']
+private_email = @old_cfg['private_email']
+ml_url = @old_cfg['ml_url']
+git_doc = 'https://kernel.org/pub/software/scm/git/docs/'
+se_url = "#{git_doc}git-send-email.html"
+rp_url = "#{git_doc}git-request-pull.html"
+
+if public_email && private_email && ml_url %><hr /><p>
+We love to hear from you!<br />
+Email patches (using <a
+href="<%= se_url %>">git send-email</a>),
+pull requests (formatted using <a
+href="<%= rp_url %>">git request-pull</a>), questions, bug reports,
+suggestions, etc. to us publically at:<br /><a
+href="mailto:<%= public_email %>"><%= public_email %></a><br />
+Mail archives are available at: <a
+href="<%= ml_url %>"><%= ml_url %></a><br />
+Please send plain-text email only and do not waste bandwidth on HTML mail,
+HTML mail will not be read.<br />
+Quote as little as reasonable and do not <a
+href="http://catb.org/jargon/html/T/top-post.html">top post</a>.<br />
+For sensitive topics, email us privately at:
+<a
+href="mailto:<%= private_email %>"><%= private_email %></a><% end %>

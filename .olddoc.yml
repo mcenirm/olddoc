@@ -1,0 +1,9 @@
+---
+cgit_url: http://bogomips.org/olddoc.git
+git_url: git://80x24.org/olddoc.git
+rdoc_url: http://80x24.org/olddoc/
+merge_html:
+  olddoc_1: Documentation/olddoc.1.html
+  olddoc_5: Documentation/olddoc.5.html
+public_email: olddoc-public@80x24.org
+private_email: olddoc@80x24.org

@@ -1,0 +1,27 @@
+<%
+@modsort.delete_if do |c|
+  c.full_name == "unknown" || @old_cfg["noindex"].include?(c.full_name)
+end
+unless @modsort.empty?
+  # To save space and reduce visual noise, we want to display:
+  #   Top Sub1 Sub2 Sub3
+  # Instead of
+  #   Top Top::Sub1 Top::Sub2 Top::Sub3
+  top_mod = nil
+  @modsort.each do |mod| %><%
+    parts = mod.full_name.split('::')
+    if parts[0] != top_mod && parts.size == 1
+      top_mod = parts[0]
+      %><%= '<br />' if mod != @modsort[0] %><%
+    elsif parts[0] != top_mod
+      top_mod = nil
+      %><%= '<br />' if mod != @modsort[0] %><%= parts[0] %> <%
+    else
+      parts.shift
+    end
+%><a
+href="<%= rel_prefix %><%= mod.path %>"><%= parts.join('::') %></a>
+<%
+  end
+end
+%><br />

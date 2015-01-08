@@ -1,0 +1,26 @@
+% olddoc(1) olddoc user manual
+
+# NAME
+
+.olddoc.yml - olddoc config file format
+
+# SYNOPSIS
+
+A YAML file in the top-level project directory named ".olddoc.yml"
+
+# DESCRIPTION
+
+As olddoc favors consistency over configuration, there is minimal
+configuration to deal with.
+
+# KEYS
+
+`rdoc_url`, `cgit_url` should be obvious
+
+`merge_html` is a key-value mapping of (empty) RDoc source files to an
+HTML file that will be merged into RDoc after-the-fact.  It is useful
+for merging non-RDoc generated HTML into the project.
+
+# SEE ALSO
+
+olddoc(1)

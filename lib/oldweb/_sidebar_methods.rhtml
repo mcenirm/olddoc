@@ -1,0 +1,6 @@
+<% unless klass.method_list.empty? %>
+<h3 id="method-list-section">Methods</h3><%
+klass.each_method do |meth| %>
+<a href="#<%= meth.aref %>"><%=
+meth.singleton ? '::' : '#' %><%= h meth.name %></a><%
+end %><% end %>

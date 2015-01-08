@@ -1,0 +1,89 @@
+= olddoc - old-fashioned Ruby documentation generator
+
+olddoc contains old-fashioned document generators for those who do not
+wish to impose bloated, new-fangled web cruft on their readers.
+
+olddoc contains oldweb, an HTML generator without any images, frames,
+CSS, or JavaScript.  It is designed for users of text-based browsers
+and/or low-bandwidth connections.  oldweb focuses on text as it is
+the lowest common denominator for accessibility and compatibility
+with people and hardware.
+
+== Reasons
+
+* No CSS.  Encouraging users to use CSS leads to problems like
+  copy-paste hijacking: http://thejh.net/misc/website-terminal-copy-paste
+  External CSS also increases page load time as it often blocks page
+  rendering.  Asynchronous loading of CSS also causes accessibility
+  problems as links/buttons may move as a user attempts to click.
+
+* No JavaScript.  There is a constant barrage of security and
+  client-side performance problems associated with it.  It's also
+  unreasonable to expect users to rely on LibreJS and inspect every
+  piece of JS they run.
+
+* No frames.  Frames are an accessibility hassle and unfriendly
+  to users of tiny screens on mobile devices and text-based browsers.
+
+* No images.  Not everyone can view or afford bandwidth to load images.
+  This also reduces the potential for security vulnerabilities as less
+  code gets run.  Furthermore, loading the wrong image in a public
+  place can get you arrested (or worse).
+
+Encourage readers to simplify and speed up their browsing experience.
+They can disable CSS, JavaScript, and images in their browser without
+missing out!
+
+== Usage
+
+	gem install olddoc
+	cd $ANY_RDOC_USING_RUBY_PROJECT
+	rdoc -f oldweb
+
+You can also use olddoc to generate NEWS and ChangeLog entries
+assuming you have a README file and .olddoc.yml
+
+	olddoc prepare
+
+And "olddoc merge" to merge instances of "olddoc_placeholder" in
+an HTML file with HTML fragments generated with other tools
+such as pandoc(1).  This requries an appropriately configured
+.olddoc.yml with a "merge_html" section see olddoc(5)
+
+== Source code
+
+	git clone git://80x24.org/olddoc
+
+Please use git-format-patch(1) and git-send-email(1) distributed with
+the git(7) suite for generating and sending patches.  Please format
+pull requests with the git-request-pull(1) script (also distributed
+with git(7)) and send them via email to <olddoc-public@80x24.org>
+
+== Contact
+
+All feedback (comments, results, feature requests, bug reports, patches,
+pull-requests) via plain-text mail to the mailing list is very much
+appreciated.
+
+Please send plain-text mail to the list at <olddoc-public@80x24.org>
+HTML will not be read.  olddoc is for GUI-phobes, by GUI-phobes.
+Mailing list archives available at http://80x24.org/olddoc-public/
+No subscription is necessary to post to the mailing list.
+
+== License
+
+olddoc is copyrighted Free Software by all contributors, see logs
+in revision control for names and email addresses of all of them.
+
+olddoc is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
+
+olddoc is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, see https://www.gnu.org/licenses/gpl-3.0.txt

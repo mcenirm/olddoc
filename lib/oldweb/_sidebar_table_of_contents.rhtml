@@ -1,0 +1,15 @@
+<%
+comment = current.respond_to?(:comment_location) ? current.comment_location :
+          current.comment
+table = current.parse(comment).table_of_contents
+if table.length > 1
+%><%
+  table.each_with_index do |heading, i|
+    next if heading.level > @old_cfg['toc_max']
+%><a
+href="#<%= heading.label(current) %>"><%=
+    i == 0 ? "top" : heading.plain_html %></a>
+<%
+  end %><br /><%
+end
+%>
