@@ -3,7 +3,6 @@
 module Olddoc
   VERSION = '1.0.0'
 
-  autoload :Changelog, 'olddoc/changelog'
   autoload :Gemspec, 'olddoc/gemspec'
   autoload :History, 'olddoc/history'
   autoload :Merge, 'olddoc/merge'

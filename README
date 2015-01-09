@@ -40,8 +40,8 @@ missing out!
 	cd $ANY_RDOC_USING_RUBY_PROJECT
 	rdoc -f oldweb
 
-You can also use olddoc to generate NEWS and ChangeLog entries
-assuming you have a README file and .olddoc.yml
+You can also use olddoc to generate NEWS entries
+assuming you have git tags, a README file and .olddoc.yml
 
 	olddoc prepare
 

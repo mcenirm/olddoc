@@ -14,7 +14,7 @@ olddoc - old-fashioned RDoc HTML generator
 
 olddoc features oldweb, and old-fashioned RDoc HTML generator.
 You can also use "olddoc prepare" to generate NEWS files from
-git tags and ChangeLog entries from "git log".
+git tags.
 
 # SEE ALSO
 

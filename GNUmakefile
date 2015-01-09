@@ -16,7 +16,7 @@ fix-perms:
 gem-man:
 	$(MAKE) -C Documentation/ gem-man
 
-pkg_extra := NEWS ChangeLog
+pkg_extra := NEWS
 
 .manifest: fix-perms
 	$(RUBY) -I lib bin/olddoc prepare
@@ -55,5 +55,5 @@ $(pkggem): fix-perms .gem-manifest
 
 package: $(pkggem)
 
-.PHONY: all .FORCE-GIT-VERSION-FILE NEWS ChangeLog
+.PHONY: all .FORCE-GIT-VERSION-FILE NEWS
 .PHONY: check-warnings fix-perms doc
