@@ -23,7 +23,7 @@ task :rsync_docs do
 
   files = `git ls-files Documentation/*.txt`.split(/\n/)
   files.concat(top)
-  files.concat(%w(NEWS))
+  files.concat(%w(NEWS NEWS.atom.xml))
   files.concat(Dir["doc/*.html"].to_a)
   gzfiles = files.map { |txt| do_gzip.call(txt) }
   files.concat(gzfiles)
