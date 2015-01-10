@@ -39,10 +39,10 @@ id="<%= visibility %>-<%= type %>-<%= section.aref %>-method-details">
 <%= visibility.to_s.capitalize %> <%= type.capitalize %> Methods</h3><%
       methods.each do |method|
       %><pre id="<%= method.aref %>"><b><%
-        if method.call_seq %><%= h method.call_seq %><%
+        if method.call_seq %><%= h method.call_seq.strip %><%
         else
-          %><%= h method.name %> <%= h method.param_seq %><%
-        end %></b><%= method_srclink(method) %></pre><%=
+          %><%= h method.name %> <%= h method.param_seq.strip %><%
+        end %></b> <%= method_srclink(method) %></pre><%=
           method.comment ? method.description.strip : nd %><%
         if method.calls_super %>Calls superclass method<%=
            method.superclass_method ?
