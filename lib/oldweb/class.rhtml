@@ -41,7 +41,9 @@ id="<%= visibility %>-<%= type %>-<%= section.aref %>-method-details">
       %><pre id="<%= method.aref %>"><b><%
         if method.call_seq %><%= h method.call_seq.strip %><%
         else
-          %><%= h method.name %> <%= h method.param_seq.strip %><%
+          %><%= h method.name %><%=
+          seq = method.param_seq
+          seq ? " #{h(seq.strip)}" : "" %><%
         end %></b> <%= method_srclink(method) %></pre><%=
           method.comment ? method.description.strip : nd %><%
         if method.calls_super %>Calls superclass method<%=
