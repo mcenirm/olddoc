@@ -1,7 +1,7 @@
 # Copyright (C) 2015, all contributors <olddoc-public@80x24.org>
 # License: GPLv3 or later (https://www.gnu.org/licenses/gpl-3.0.txt)
 module Olddoc
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 
   autoload :Gemspec, 'olddoc/gemspec'
   autoload :History, 'olddoc/history'
